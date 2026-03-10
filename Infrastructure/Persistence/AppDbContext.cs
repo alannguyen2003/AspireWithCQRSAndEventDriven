@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OrderAPI.Models;
+using Microsoft.Extensions.Configuration;
 
-namespace OrderAPI.Data;
+namespace Infrastructure.Persistence;
 
 public class AppDbContext : DbContext
 {
@@ -12,8 +12,6 @@ public class AppDbContext : DbContext
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
-    
-    public virtual DbSet<Order> Orders { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
