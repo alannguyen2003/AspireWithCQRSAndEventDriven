@@ -25,7 +25,6 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<OrderReadModel>()
-            .HasNoKey();
+        base.OnModelCreating(modelBuilder);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Application.Features.Orders.Commands;
+﻿namespace Application.Features;
 
 public interface IHandler<T>
 {

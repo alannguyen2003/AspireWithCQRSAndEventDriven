@@ -33,7 +33,7 @@ public class EventProcessor : BackgroundService
 
                     var readModel = new OrderReadModel()
                     {
-                        OrderId = order.Id,
+                        Id = order.Id,
                         CustomerName = order.CustomerName,
                         TotalPrice = order.TotalPrice,
                         CreatedAt = order.CreatedAt,
