@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Persistence;
@@ -12,18 +13,19 @@ public class AppDbContext : DbContext
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
+    
+    public virtual DbSet<Order> Orders { get; set; }
+    public virtual DbSet<DomainEvent> DomainEvents { get; set; }
+    public virtual DbSet<OrderReadModel> OrderReadModels { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(GetConnectionString());
+        base.OnConfiguring(optionsBuilder);
     }
 
-    private string GetConnectionString()
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        IConfiguration configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", true, true)
-            .Build();
-        return configuration.GetConnectionString("DefaultConnectionString") ?? string.Empty;
+        modelBuilder.Entity<OrderReadModel>()
+            .HasNoKey();
     }
 }
