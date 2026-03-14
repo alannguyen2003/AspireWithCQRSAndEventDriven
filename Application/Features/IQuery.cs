@@ -2,5 +2,5 @@
 
 public interface IQuery<T>
 {
-    public Task<T?> Get(int orderId);
+    public Task<T?> Get(int id);
 }

@@ -12,8 +12,8 @@ public class GetOrderHandler : IGetOrderHandler
         _orderReadModelRepository = orderReadModelRepository;
     }
     
-    public async Task<OrderReadModel?> Get(int orderId)
+    public async Task<OrderReadModel?> Get(int id)
     {
-        return await _orderReadModelRepository.GetOrderReadModelAsync(orderId);
+        return await _orderReadModelRepository.GetOrderReadModelAsync(id);
     }
 }
